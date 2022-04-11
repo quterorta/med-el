@@ -11,6 +11,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class BaseController extends Controller
 {
@@ -37,11 +38,6 @@ class BaseController extends Controller
     {
         $partners = Partner::all();
         return view('pages.frontend.contacts', compact('partners'));
-    }
-
-    public function wishlist()
-    {
-        return view('pages.frontend.test');
     }
 
     public function allProductsPageView(Request $request)
@@ -169,6 +165,24 @@ class BaseController extends Controller
         $searchRequest = $request->search;
         $products = Product::where('title', 'like', '%'.$searchRequest.'%')->orderBy('id')->paginate(20);
         return view('pages.frontend.search', compact('products', 'searchRequest'));
+    }
+
+    public function wishlistPageView(Request $request)
+    {
+        $productIds = json_decode(Session::get('favoriteProductIds'));
+        if (!$productIds == null) {
+            $products = Product::whereIn('id', array_values($productIds))->paginate(20);
+        } else {
+            $products = [];
+        }
+        $partners = Partner::all();
+        return view('pages.frontend.wishlist', compact('products', 'partners'));
+    }
+
+    public function setWishlist(Request $request)
+    {
+        Session::put('favoriteProductIds', $request->productIds);
+        return response()->json(['success']);
     }
 }
 

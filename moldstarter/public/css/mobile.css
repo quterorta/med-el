@@ -509,6 +509,29 @@
         margin: 2.5rem 0 1rem 0;
     }
 
+    .wishlist-header {
+        padding: 0;
+        border-bottom: 3px solid #ed5435;
+    }
+    .empty-wishlist {
+        font-size: 2rem;
+        margin: 2.5rem 0;
+    }
+
+    .empty-wishlist a {
+        display: inline-block;
+        color: #ed5435;
+        font-weight: 700;
+        text-decoration: none;
+        border-bottom: 3px solid #2a2731;
+        padding: 0;
+    }
+    .empty-wishlist a:hover {
+        color: #ed5435;
+        border-bottom: 3px solid #2a2731;
+        box-shadow: inset 0px -4.5rem 0px 0px #2a2731;
+    }
+
 
 
 }

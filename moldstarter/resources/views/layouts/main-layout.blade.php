@@ -39,6 +39,7 @@
     <script src="/js/select2-init.js"></script>
     <script src="/js/image-uploader.js"></script>
     <script src="/js/slugify.js"></script>
+    <script src="/js/favorite-products.js"></script>
     @yield('additional-css')
     @yield('additional-script')
 </head>

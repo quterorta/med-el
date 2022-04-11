@@ -11,7 +11,7 @@
         </div>
         <div class="header-pc-top-section-links-container">
             <div class="header-pc-top-section-wishlist-container">
-                <a href="{{ route('wishlist') }}" title="Lista ta de dorințe"><i class="fa-solid fa-heart"></i></a>
+                <a href="{{ route('wishlist') }}" title="Lista ta de dorințe" class="wishlistBtn"><i class="fa-solid fa-heart"></i></a>
             </div>
             <div class="header-pc-top-section-phone-container">
                 <a href="tel:+380916216271" title="Sună-ne"><i class="fa-solid fa-phone"></i></a>
@@ -62,7 +62,7 @@
     </div>
     <div class="offcanvas-body">
         <div class="offcanvas-inline-links">
-            <a href="{{ route('wishlist') }}" title="Lista ta de dorințe"><i class="fa-solid fa-heart"></i></a>
+            <a href="{{ route('wishlist') }}" title="Lista ta de dorințe" class="wishlistBtn"><i class="fa-solid fa-heart"></i></a>
             <a href="tel:+380916216271" title="Sună-ne"><i class="fa-solid fa-phone"></i></a>
             <a href="" title="Alegeți limba"><i class="fa-solid fa-language"></i></a>
         </div>
@@ -88,3 +88,30 @@
         <p><a href="{{ route('contacts') }}">Contacte</a></p>
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function () {
+        $('.wishlistBtn').click(function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: "{{ route('set-wishlist') }}",
+                type: "POST",
+                data: {
+                    'productIds': localStorage.getItem('favorite-products'),
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr("content")
+                },
+                success: (data) => {
+                    console.log(data);
+                },
+                error: (data) => {
+                    console.log('error');
+                },
+                dataType: "json"
+            });
+            document.location = $(this).attr('href');
+        });
+    });
+</script>

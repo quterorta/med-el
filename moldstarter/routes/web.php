@@ -32,6 +32,7 @@ Route::get('/', [BaseController::class, 'homePageView'])->name('home');
 Route::get('/about-us', [BaseController::class, 'aboutUsPageView'])->name('about-us');
 Route::get('/contacts', [BaseController::class, 'contactsPageView'])->name('contacts');
 Route::get('/wishlist', [BaseController::class, 'wishlistPageView'])->name('wishlist');
+Route::post('/set-wishlist', [BaseController::class, 'setWishlist'])->name('set-wishlist');
 Route::get('/all-products', [BaseController::class, 'allProductsPageView'])->name('all-products');
 Route::post('/product-contact-form', [MailController::class, 'productDetailContactForm'])->name('product-contact-form');
 Route::post('/page-contact-form', [MailController::class, 'pageContactForm'])->name('page-contact-form');

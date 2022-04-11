@@ -390,3 +390,30 @@
 .footer-form-button:hover {
     background-color: #2a2731;
 }
+
+.wishlist-header {
+    color: #2a2731;
+    border-bottom: 5px solid #ed5435;
+    padding: 0 0.5rem 0 5rem;
+}
+
+.empty-wishlist {
+    font-size: 3rem;
+    font-weight: 500;
+    color: #2a2731;
+    margin: 10rem 0;
+}
+
+.empty-wishlist a {
+    display: inline-block;
+    color: #ed5435;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 3px solid #2a2731;
+    padding: 2px 5px;
+}
+.empty-wishlist a:hover {
+    color: #ed5435;
+    border-bottom: 3px solid #2a2731;
+    box-shadow: inset 0px -4.5rem 0px 0px #2a2731;
+}

@@ -4,6 +4,14 @@
     {{ $product->title }}
 @endsection
 
+@section('meta-tags')
+    <meta name="description" content="{{ $product->seo_description }}">
+    <meta property="og:image" content="{{ Storage::url($product->images->first()->image_path) }}">
+    <meta property="og:title" content="{{ $product->seo_title }}">
+    <meta property="og:description" content="{{ $product->seo_description }}">
+    <meta name="keywords" content="{{ $product->seo_keywords }}">
+@endsection
+
 @section('header')@include('layouts.frontend.header')@endsection
 
 @section('main-content')
@@ -16,7 +24,7 @@
     <section class="main-product-content block-plr-5 block-ptb-5">
         <div class="main-product-content-grid">
             <div class="main-product-content-grid-gallery">
-                <p class="main-product-content-grid-gallery-header">{{ $product->title }}</p>
+                <h1 class="main-product-content-grid-gallery-header">{{ $product->title }}</h1>
                 <div class="product-detail-slick">
                     @foreach($product->images as $image)
                         <img class="product-detail-slick-image" src="{{ Storage::url($image->image_path) }}" alt="">
@@ -44,7 +52,7 @@
                     @if($product->new_to_date > \Carbon\Carbon::now()->toDateString())<span class="product-detail-adv-new">Nou</span>@endif
                 </p>
                 <p class="product-detail-price">{{ $product->price }} MDL</p>
-                <button class="product-detail-wishlist" data-product="{{ $product->id }}">Adaugă la favorite <i class="fa-solid fa-heart"></i></button>
+                <button class="product-detail-wishlist add-to-favorite" data-product="{{ $product->id }}">Adaugă la favorite <i class="fa-solid fa-heart"></i></button>
                 <a href="tel:+3731111111" class="product-detail-buy">+3731111111</a>
             </div>
         </div>

@@ -1,4 +1,7 @@
 <div class="product-card">
+    <div class="favorite-product-badge-container">
+        <button type="button" class="add-to-favorite-min favorite-product-badge" data-product="{{ $product->id }}"></button>
+    </div>
     <div class="product-card-image-container">
         <div class="product-card-image-container-slick">
             @foreach($product->images as $image)
